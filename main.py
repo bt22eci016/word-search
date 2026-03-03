@@ -20,8 +20,8 @@ except Exception:
 # CONFIG
 # ======================
 
-API_KEY = "AIzaSyDsAhMsPA5Sf3I7AllJKUQWmD5bnDH08fU"
-VIDEO_ID = "MDZIRNW9Gqc"
+API_KEY = os.getenv("YOUTUBE_API_KEY", "")
+VIDEO_ID = os.getenv("VIDEO_ID", "")
 
 GRID_SIZE = 9
 MIN_WORDS = 3
@@ -552,4 +552,5 @@ if __name__ == "__main__":
         try:
             chat_loop()
         except KeyboardInterrupt:
+
             print("\n👋 Shutting down...")

@@ -531,10 +531,10 @@ if __name__ == "__main__":
 
     generate_round()
 
-    print("🌐 Starting Flask server on http://localhost:5000")
-    threading.Thread(target=start_server, daemon=True).start()
-
     threading.Thread(target=leaderboard_timer, daemon=True).start()
+
+    print("🌐 Starting Flask server")
+    start_server()
 
     if args.mock:
         print("🎮 Running in MOCK mode (simulated chat, no YouTube needed)")

@@ -28,8 +28,8 @@ MIN_WORDS = 3
 MAX_WORDS = 4
 MAX_ATTEMPTS = 200
 COOLDOWN = 5
-LEADERBOARD_RESET_INTERVAL = 1 * 6  # 15 minutes in seconds
-INTERMISSION_DURATION = 20             # 20-second leaderboard-only transmission after leaderboard reset
+LEADERBOARD_RESET_INTERVAL = 15 * 6  # 15 minutes in seconds
+INTERMISSION_DURATION = 10             # 20-second leaderboard-only transmission after leaderboard reset
 ROUND_RESET_DELAY = 5                  # seconds between round end and next round start
 WORDS_PER_ROUND_LIMIT = 7             # round resets when this many words are found
 STREAM_CHECK_INTERVAL = 30             # seconds if not live
@@ -512,7 +512,8 @@ def mock_chat_loop():
         handle_chat_message(user, word)
 
 def start_server():
-    socketio.run(app, host="0.0.0.0", port=5000, debug=False)
+    port = int(os.environ.get("PORT", 5000))
+    socketio.run(app, host="0.0.0.0", port=port, debug=False)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the word grid game or print the current round words.")
